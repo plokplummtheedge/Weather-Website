@@ -8,11 +8,16 @@ async function fetchNews() {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        displayNews(data.articles);
+        if (data.articles) {
+            displayNews(data.articles);
+        } else {
+            console.error('No articles found');
+        }
     } catch (error) {
         console.error('Error fetching the news:', error);
     }
 }
+
 
 function displayNews(articles) {
     const newsContainer = document.getElementById('news-container');
