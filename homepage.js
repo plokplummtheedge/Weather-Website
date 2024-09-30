@@ -3,7 +3,10 @@ const url = `https://newsapi.org/v2/everything?q=typhoon&apiKey=${apiKey}`;
 
 async function fetchNews() {
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, { mode: 'cors' });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
         const data = await response.json();
         displayNews(data.articles);
     } catch (error) {
@@ -26,8 +29,5 @@ function displayNews(articles) {
         newsContainer.appendChild(articleElement);
     });
 }
-
+    
 fetchNews();
-
-
-
