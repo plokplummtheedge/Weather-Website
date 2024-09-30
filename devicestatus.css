@@ -150,9 +150,43 @@ h1 {
   }
 
 
+
   .container {
-    display: flex;
-    gap: 35px;
-    padding: 30px;
     font-size: xx-large;
   }
+
+
+  .container button {
+    background-color: red;
+    color: white;
+    font-size: large;
+    border-radius: 50%;
+    border-style: outset;
+    cursor: pointer;
+
+  }
+
+  .container button:hover {
+    background-color: rgb(243, 64, 64);
+    animation: 0.1s;
+    transform: scale3d(1.1);
+
+  }
+
+  @media (max-width: 750px) {
+
+    .content {
+        margin-top: 15%;
+    }
+
+  .header {
+    font-size: 1.45rem;
+    padding: 0px 0px;
+    margin-top: 50px;
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+  
+}

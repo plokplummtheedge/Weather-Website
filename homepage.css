@@ -18,8 +18,8 @@ Header
     width: 100%;
     top: 0;
     z-index: 1000;
-    border-bottom: solid rgb(153, 141, 141);
-    border-width:2px;
+    border-bottom: solid rgba(102, 90, 90, 0.151);
+    border-width: 3px;
    
 }
 .navbar img {
@@ -108,7 +108,7 @@ Vertical Tabs
 }
 
 nav {
-    border-right: solid rgb(207, 192, 192);
+    border-right: solid rgb(180, 73, 73);
     border-width:1px;
     position: fixed;
     top: 40px;
@@ -129,24 +129,66 @@ nav {
 /* Content*/
 
 .content {
-    margin-top: 2%;
+    margin-top: 4%;
     margin-left: 50px;
-    padding: 10px;
+    padding: 0%;
     overflow-y: scroll;
     height: calc(100vh - 50px);
+    
+}
+
+header {
+    background: #007BFF;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+#news-container {
+    padding: 20px;
+}
+
+.article {
+    background: white;
+    margin: 10px 0;
+    padding: 18px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.article img {
+    width: 100%; /* Ensures the image is responsive */
+    height: auto;
 }
 
 
-h1 {
-  background: #c2d9e4;
-  font-size: 2.75rem;
-  text-align: center;
-  padding: 18px 0;
-  color: #1e2241;
-}
+@media (max-width: 750px) {
 
-.container {
-    display: flex;
-    gap: 35px;
-    padding: 30px;
+    .content {
+        margin-top: 18%;
+    }
+
+  .header {
+    font-size: 1.45rem;
+    padding: 0px 0px;
+    margin-top: 50px;
   }
+
+  h2 {
+    font-size: 15px;
+  }
+  
+  .article {
+    width: fit-content;
+    background: rgb(248, 244, 244);
+    margin: 0px 0;
+    padding: 10px 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.article img {
+    width: 150%; /* Increase image size for mobile */
+    max-width: none; /* Remove max-width restriction */
+    }
+}
