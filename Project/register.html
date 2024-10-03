@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="loginpage.css">
+    <title>Register Page</title>
+
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC4YzHW4nAxRPVFi2PRiGYauz1oIKKKRmQ",
+    authDomain: "weatheready-ilsg3.firebaseapp.com",
+    projectId: "weatheready-ilsg3",
+    storageBucket: "weatheready-ilsg3.appspot.com",
+    messagingSenderId: "Y616320062383",
+    appId: "1:616320062383:web:43b171e69dbfb008a7d55a"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+</head>
+
+
+
+<body>
+    <div class="container">
+        <h1>Register</h1>
+        <input type="email" id="regEmail" placeholder="Email" required>
+        <input type="password" id="regPassword" placeholder="Password" required>
+        <button id="registerBtn">Register</button>
+        <p>Already have an account? <a href="index.html">Login</a></p>
+    </div>
+    <script src="loginpage.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homepage.css">
+    <title>Homepage</title>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="navbar">
+        <div>
+            <img src="" alt="Logo" class="logo">
+            <a href="#about"> About</a>
+        </div>
+        <div class="profile">
+            <span style="margin-right: 20px;">FirstName LastName</span>
+            <div class="profilelogo"> </div>
+        </div>
+    </div>
+
+    <!-- Sidebar-->
+<nav>
+    <ul class="tab">
+
+        <a href="Homepage.html"> <div class="tabs" >  <li inert> <img src="images/menu.png" class="icon" />  </li>   </div> </a>
+        <li> <br> </li>
+
+        <a href="Homepage.html"> <div class="tabss" >  <li inert> <img src="images/house.png" class="icon" />  </li>   </div> </a>
+        <a href="Weather+Dashboard.html"> <div class="tabs"> <li inert><img src="images/weather_dashboard.png" class="icon" /> </li> </div> </a>
+        <a href="Emergencykit.html"> <div class="tabs"> <li inert><img src="images/info.png" class="icon" /> </li> </div> </a>
+        <a href="Devicestatus.html"><div class="tabs"> <li inert><img src="images/device_status.png" class="icon"/> </li> </div> </a>      
+    </ul>
+</nav>
+
+<header>
+    <h1>Weather News</h1>
+</header>
+
+<!-- Content -->
+
+<div class="container">
+    <h1>Welcome to the Homepage</h1>
+    <p id="userName"></p>
+    <script>
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                document.getElementById('userName').innerText = `Hello, ${user.email}`;
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+
+    <h2>Latest Typhoon News</h1>
+    <div id="news-container"></div>
+</div>
+
+ 
+
+    
+</body>
+</html>
