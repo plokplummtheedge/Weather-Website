@@ -1,38 +1,50 @@
-const apiKey = '69e54be3b3d041ca9be9a6c79d713ffb';
-const url = `https://newsapi.org/v2/everything?q=typhoon&apiKey=${apiKey}`;
+const weatherUpdatesDiv = document.getElementById('weatherUpdates');
 
-async function fetchNews() {
+// Replace with your actual API key and endpoint
+const apiKey = '9a5bcce8143666a0b654237fd7a7df25';
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Manila,PH&appid=${apiKey}`;
+
+
+
+
+async function fetchWeatherUpdates() {
     try {
-        const response = await fetch(url, { mode: 'cors' });
+        const response = await fetch(apiUrl);
+        const text = await response.text();
+
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
-        if (data.articles) {
-            displayNews(data.articles);
-        } else {
-            console.error('No articles found');
+
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch (jsonError) {
+            throw new Error(`JSON parsing error: ${jsonError.message}`);
         }
+
+        displayUpdates(data);
     } catch (error) {
-        console.error('Error fetching the news:', error);
+        console.error('Error fetching weather data:', error);
+        weatherUpdatesDiv.innerHTML = '<p>Failed to load updates. Please try again later.</p>';
     }
 }
 
 
-function displayNews(articles) {
-    const newsContainer = document.getElementById('news-container');
-    articles.forEach(article => {
-        const articleElement = document.createElement('div');
-        articleElement.classList.add('article');
-        articleElement.style.marginBottom = '40px';
-        articleElement.innerHTML = `
-            <h2>${article.title}</h2>
-            <img src="${article.urlToImage}" alt="${article.title}" style="width:100%; height:auto; max-width:600px;">
-            <p>${article.description}</p>
-            <a href="${article.url}" target="_blank">Read more</a>
+
+function displayUpdates(data) {
+    weatherUpdatesDiv.innerHTML = ''; 
+
+    data.updates.forEach(update => {
+        const updateDiv = document.createElement('div');
+        updateDiv.className = 'update';
+        updateDiv.innerHTML = `
+            <h3>${update.title}</h3>
+            <p>${update.description}</p>
+            <p><strong>Published:</strong> ${new Date(update.date).toLocaleString()}</p>
         `;
-        newsContainer.appendChild(articleElement);
+        weatherUpdatesDiv.appendChild(updateDiv);
     });
 }
-    
-fetchNews();
+
+fetchWeatherUpdates();

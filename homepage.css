@@ -13,8 +13,7 @@ Header
     justify-content: space-between;
     align-items: center;
     background-color: #a3a9b3;
-    padding: 10px 20px;
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 0;
     z-index: 1000;
@@ -23,9 +22,12 @@ Header
    
 }
 .navbar img {
-    display: inline;
-    height: 10px;
-    width: 100px;
+    margin-top: 10px;
+    margin-left: 15px;
+    max-height: 40px; 
+    max-width: 100%; 
+    height: auto; 
+    width: 250px; 
     
 }
 
@@ -129,66 +131,43 @@ nav {
 /* Content*/
 
 .content {
-    margin-top: 4%;
     margin-left: 50px;
-    padding: 0%;
-    overflow-y: scroll;
-    height: calc(100vh - 50px);
-    
+    margin-right: 5px;
+    overflow-y: auto;
 }
 
-header {
-    background: #007BFF;
-    color: white;
-    padding: 10px 0;
+h1 {
+    background: #c7c2c2;
+    font-size: 1.75rem;
     text-align: center;
-}
-
-#news-container {
-    padding: 20px;
-}
-
-.article {
-    background: white;
-    margin: 10px 0;
     padding: 18px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    color: #ffffff;
+    border-bottom: #000000;
+    border-width: 10px;
+    border-bottom: solid rgba(154, 223, 255, 0.123);
+  }
 
-.article img {
-    width: 100%; /* Ensures the image is responsive */
-    height: auto;
-}
+
+
+
+
+
+
+
+
 
 
 @media (max-width: 750px) {
 
     .content {
-        margin-top: 18%;
+        margin-left: 61px;
+        overflow-y: auto;
     }
 
-  .header {
+  h1 {
     font-size: 1.45rem;
-    padding: 0px 0px;
-    margin-top: 50px;
-  }
-
-  h2 {
-    font-size: 15px;
+    padding: 0px;
+    
   }
   
-  .article {
-    width: fit-content;
-    background: rgb(248, 244, 244);
-    margin: 0px 0;
-    padding: 10px 5px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.article img {
-    width: 150%; /* Increase image size for mobile */
-    max-width: none; /* Remove max-width restriction */
-    }
 }
