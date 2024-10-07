@@ -1,50 +1,41 @@
-const weatherUpdatesDiv = document.getElementById('weatherUpdates');
 
-// Replace with your actual API key and endpoint
-const apiKey = '9a5bcce8143666a0b654237fd7a7df25';
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Manila,PH&appid=${apiKey}`;
+const apiKey = 'c269712b1b394ee4ad869967a12bd043'; // Replace with your actual WorldNews API Key
+const apiUrl = `https://worldnewsapi.com/api/v1/news?apikey=${apiKey}&country=PH&category=weather,flood`;
 
-
-
-
-async function fetchWeatherUpdates() {
+async function fetchNews() {
     try {
         const response = await fetch(apiUrl);
-        const text = await response.text();
+        const data = await response.json();
+        const newsContainer = document.getElementById('news-container');
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        data.articles.forEach(article => {
+            const newsCard = document.createElement('div');
+            newsCard.classList.add('news-card');
 
-        let data;
-        try {
-            data = JSON.parse(text);
-        } catch (jsonError) {
-            throw new Error(`JSON parsing error: ${jsonError.message}`);
-        }
+            const img = document.createElement('img');
+            img.src = article.image || 'default-image.jpg';  // Fallback to default if no image
 
-        displayUpdates(data);
+            const title = document.createElement('h2');
+            title.textContent = article.title;
+
+            const description = document.createElement('p');
+            description.textContent = article.description || 'No description available.';
+
+            const link = document.createElement('a');
+            link.href = article.url;
+            link.target = '_blank';
+            link.textContent = 'Read more';
+
+            newsCard.appendChild(img);
+            newsCard.appendChild(title);
+            newsCard.appendChild(description);
+            newsCard.appendChild(link);
+
+            newsContainer.appendChild(newsCard);
+        });
     } catch (error) {
-        console.error('Error fetching weather data:', error);
-        weatherUpdatesDiv.innerHTML = '<p>Failed to load updates. Please try again later.</p>';
+        console.error('Error fetching the news:', error);
     }
 }
 
-
-
-function displayUpdates(data) {
-    weatherUpdatesDiv.innerHTML = ''; 
-
-    data.updates.forEach(update => {
-        const updateDiv = document.createElement('div');
-        updateDiv.className = 'update';
-        updateDiv.innerHTML = `
-            <h3>${update.title}</h3>
-            <p>${update.description}</p>
-            <p><strong>Published:</strong> ${new Date(update.date).toLocaleString()}</p>
-        `;
-        weatherUpdatesDiv.appendChild(updateDiv);
-    });
-}
-
-fetchWeatherUpdates();
+fetchNews();

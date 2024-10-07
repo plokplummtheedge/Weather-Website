@@ -130,7 +130,10 @@ nav {
 
 /* Content*/
 
-
+.content {
+    margin-left: 50px;
+    margin-right: 5px;
+}
 
 h1 {
     background: #0f8b2a;
