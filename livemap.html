@@ -42,11 +42,20 @@
 <div class="content">
     <h1>Live Weather Map</h1>
     <div class="map-container">
-        <iframe src="https://www.meteoblue.com/en/weather/maps#coords=5.34/12.324/123.669&map=windAnimation~rainbow~auto~10%20m%20above%20gnd~none?desktop=true" 
-                allowfullscreen>
-        </iframe>
+        <iframe src="https://www.meteoblue.com/en/weather/maps#coords=5.34/12.324/123.669&map=windAnimation~rainbow~auto~10%20m%20above%20gnd~none?" 
+        allowfullscreen alt="link: https://www.meteoblue.com/en/weather/maps#coords=5.34/12.324/123.669&map=windAnimation~rainbow~auto~10%20m%20above%20gnd~none?"></iframe>
+        <script>
+            window.onload = function() {
+                var iframe = document.querySelector('iframe');
+                iframe.onerror = function() {
+                    alert('The weather map could not be loaded. Please check your internet connection or try again later.');
+                };
+            };
+        </script>
+        
     </div>
 </div>
+
 
 </body>
 </html>
