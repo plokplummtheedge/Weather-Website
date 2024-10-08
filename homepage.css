@@ -1,140 +1,133 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/*
-Header
-*/
-
-.navbar {
+    font-family: 'Kanit', sans-serif;
+  }
+  
+  /* Header */
+  .navbar {
+    color: #ffffff;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: #a3a9b3;
+    padding: 10px 20px;
     position: sticky;
-    width: 100%;
     top: 0;
+    width: 100%;
     z-index: 1000;
-    border-bottom: solid rgba(102, 90, 90, 0.151);
-    border-width: 3px;
-   
-}
-.navbar img {
-    margin-top: 10px;
-    margin-left: 15px;
-    max-height: 40px; 
-    max-width: 100%; 
-    height: auto; 
-    width: 250px; 
-    
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-}
-.profile {
+    border-bottom: 3px solid rgba(102, 90, 90, 0.151);
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+  
+  /* Menu Icon */
+  .menu-icon {
+    cursor: pointer;
+    margin-right: 20px; /* Space between menu icon and logo */
+    transition: background 0.3s ease; /* Add transition for hover */
+  }
+  
+  .menu-icon img.icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Logo */
+  .logo-container {
+    color: #ffffff;
+    font-family: Winden;
+    font-size: xx-large;
     display: flex;
     align-items: center;
-}
-.profile img {
-    height: 30px;
-    border-radius: 50%;
-    margin-left: 10px;
-}
-
-.profilelogo {
+    flex-grow: 1; /* Allow logo container to grow */
+  }
+  
+  .logo {
+    max-height: 40px; /* Ensure the logo has a max height */
+    width: auto;
+    height: auto;
+  }
+  
+  /* Profile */
+  .profile {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .profile span {
+    font-family: monospace;
+    font-size: x-large;
+  }
+  
+  /* Profile Logo */
+  .profilelogo {
     background-color: #2cbee2;
     padding: 20px;
     border-radius: 50%;
-}
-
-
-
-
-
-/*
-Vertical Tabs
-*/
-.tab {
+  }
+  
+  /* Side Navigation */
+  .side-nav {
+    position: fixed; /* Ensure side nav is fixed */
+    top: 60px; /* Position below header */
+    left: 0; /* Position on the left */
+    width: 250px;
+    height: calc(100% - 70px); /* Full height minus header height */
+    background-color: #eaeaea;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%); /* Start hidden off-screen */
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 999; /* Ensure it's above other content */
+  }
+  
+  .side-nav.active {
+    transform: translateX(0); /* Show side nav */
+  }
+  
+  .tab {
     list-style: none;
-    
-    
-}
-
-.tabs {                 
-    margin-top: 1.43rem;
-    font-size: 90%;
-    padding: 10px;
-    cursor: pointer;
-    transition: transform 0.3s;
-    display:-webkit-inline-box;
-    
-}
-
-.tabs:hover {
-    background-color: #83afd3;
-    color: #fff;
-    transform: scale(1.1);
-    
-}
-
-
-.tabss {
-    margin-top: 1.43rem;
-    font-size: 90%;
-    padding: 10px;
-    cursor: pointer;
-    transition: transform 0.3s;
-    background-color: #9badbd;
-    display:-webkit-inline-box;
-    position: left;
-    
-}
-
-
-.tabss:hover {
-    background-color: #7298b8;
-    color: #fff;
-    transform: scale(1.1);
-    
-}
-
-
-.tabs a {
+    padding: 0;
+  }
+  
+  .tab li {
+    margin: 10px 0;
+  }
+  
+  .tab a {
     text-decoration: none;
     color: black;
-}
-
-nav {
-    border-right: solid rgb(180, 73, 73);
-    border-width:1px;
-    position: fixed;
-    top: 40px;
-    left: 0;
-    width: 60px;
-    background-color: #eaeaea;
-    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease;
     padding: 10px;
-    
-}
-
-.icon {
+    border-radius: 5px;
+  }
+  
+  .tab a:hover {
+    background-color: #83afd3;
+  }
+  
+  .tab img.icon {
     width: 20px;
     height: 20px;
-    margin-right: 5px;
-}
+    margin-right: 8px;
+  }
+
+
+
+
+  
 
 /* Content*/
 h1 {
-    background: #d8d8d8;
+    background: #003366;
     font-size: 1.75rem;
     text-align: center;
     padding: 18px 0;
-    color: #000000;
+    color: #ffffff;
     border-bottom: #000000;
     border-width: 10px;
     border-bottom: solid rgba(97, 97, 97, 0.123);
@@ -148,15 +141,13 @@ body {
     background-color: #f4f4f4;
 }
 .container {
-    margin-left: 50px;
-    margin-right: 5px;
+    padding: 5px;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 iframe {
     width: 100%;
-    height: 100%;
-    border: solid;
+   
 }
 
 
@@ -174,3 +165,47 @@ iframe {
   }
   
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 5px; /* Reduced padding for smaller screens */
+        flex-direction: row; /* Keep items in a row */
+        align-items: center;
+    }
+  
+    .menu-icon img.icon {
+        margin-left: 5px;
+        width: 25px; /* Smaller menu icon on mobile */
+        height: 25px;
+    }
+  
+    .logo {
+        max-height: 30px; /* Reduce logo size on mobile */
+    }
+  
+    .profile {
+        margin-left: auto; /* Push profile to the right */
+    }
+  
+    .side-nav {
+        top: 50px; /* Position below header */
+        width: 200px; /* Adjust width for mobile */
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .logo {
+        max-height: 25px; /* Further reduce logo size for small devices */
+    }
+  
+    .menu-icon img.icon {
+        width: 20px; /* Even smaller menu icon */
+        height: 20px;
+    }
+  }
+  
+  /* Hover Effect for Menu Button */
+  .menu-icon:hover ~ .side-nav {
+    transform: translateX(0); /* Show the side nav on hover */
+  }

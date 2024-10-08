@@ -1,40 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="weatherdashboard.js" defer></script>
-    <link rel="stylesheet" href="weatherdashboard.css">
-    <title>Weather Dashboard</title>
-</head>
-<body>
-    <!-- Header -->
-    <div class="navbar">
-        <div>
-            <img src="images/weatheready.png" alt="Logo" class="logo">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <script src="weatherdashboard.js" defer></script>
+        <link rel="stylesheet" href="weatherdashboard.css">
+        <title>Weather Dashboard</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="navbar">
+            <div class="menu-icon" id="menuToggle">
+                <img src="images/menu.svg" class="icon" alt="Menu"/>
+            </div>
+            <div class="logo-container">
+                WeatheReady
+            </div>
+            <div class="profile">
+                <span style="margin-right: 20px;">FirstName LastName</span>
+                <div class="profilelogo"></div>
+            </div>
+        </header>
     
-        </div>
-        <div class="profile">
-            <span style="margin-right: 20px;">FirstName LastName</span>
-            <div class="profilelogo"> </div>
-        </div>
-    </div>
-
-    <!-- Sidehbar-->
-<nav>
-    <ul class="tab">
-        <a href="Homepage.html"> <div class="tabs" >  <li inert> <img src="images/menu.png" class="icon" />  </li>   </div> </a>
-        <li> <br> </li>
-
-        <a href="Homepage.html"> <div class="tabs" >  <li inert> <img src="images/house.png" class="icon" />  </li>   </div> </a>
-        <a href="Weather+Dashboard.html"> <div class="tabss"> <li inert><img src="images/weather_dashboard.png" class="icon" /> </li> </div> </a>
-        <a href="livemap.html"> <div class="tabs" >  <li inert> <img src="images/livemap.png" class="icon" />  </li>   </div> </a>
-        <a href="Emergencykit.html"> <div class="tabs"> <li inert><img src="images/info.png" class="icon" /> </li> </div> </a>
-        <a href="Devicestatus.html"><div class="tabs"> <li inert><img src="images/device_status.png" class="icon"/> </li> </div> </a>        
-    </ul>
-</nav>
+        <!-- Side Navigation (Positioned Below Header) -->
+        <nav class="side-nav" id="sideNav">
+            <ul class="tab">
+                <li><a href="Homepage.html"><img src="images/home.svg" class="icon" /><span>Home</span></a></li>
+                <li><a href="Weather+Dashboard.html"><img src="images/weather.svg" class="icon" /><span>Weather</span></a></li>
+                <li><a href="livemap.html"><img src="images/map.svg" class="icon" /><span>Live Map</span></a></li>
+                <li><a href="Emergencykit.html"><img src="images/social.svg" class="icon" /><span>Emergency Kit</span></a></li>
+                <li><a href="Devicestatus.html"><img src="images/device.svg" class="icon" /><span>Device Status</span></a></li>
+            </ul>
+        </nav>
 
 <div class="content">
     <!-- Main Content-->

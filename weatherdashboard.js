@@ -3,11 +3,7 @@ const searchButton = document.querySelector(".search-btn");
 const locationButton = document.querySelector(".location-btn");
 const currentWeatherDiv = document.querySelector(".current-weather");
 const weatherCardsDiv = document.querySelector(".weather-cards");
-
-
-
 const API_KEY = "9a5bcce8143666a0b654237fd7a7df25"; // API key for OpenWeatherMap API
-
 const createWeatherCard = (cityName, weatherItem, index) => {
     if(index === 0) { // HTML for the main weather card
         return `<div class="details">
@@ -30,10 +26,8 @@ const createWeatherCard = (cityName, weatherItem, index) => {
                 </li>`;
     }
 }
-
 const getWeatherDetails = (cityName, latitude, longitude) => {
     const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`;
-
     fetch(WEATHER_API_URL).then(response => response.json()).then(data => {
         // Filter the forecasts to get only one forecast per day
         const uniqueForecastDays = [];
@@ -43,12 +37,10 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
                 return uniqueForecastDays.push(forecastDate);
             }
         });
-
         // Clearing previous weather data
         cityInput.value = "";
         currentWeatherDiv.innerHTML = "";
         weatherCardsDiv.innerHTML = "";
-
         // Creating weather cards and adding them to the DOM
         fiveDaysForecast.forEach((weatherItem, index) => {
             const html = createWeatherCard(cityName, weatherItem, index);
@@ -62,7 +54,6 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
         alert("An error occurred while fetching the weather forecast!");
     });
 }
-
 const getCityCoordinates = () => {
     const cityName = cityInput.value.trim();
     if (cityName === "") return;
@@ -77,7 +68,6 @@ const getCityCoordinates = () => {
         alert("An error occurred while fetching the coordinates!");
     });
 }
-
 const getUserCoordinates = () => {
     navigator.geolocation.getCurrentPosition(
         position => {
@@ -99,7 +89,27 @@ const getUserCoordinates = () => {
             }
         });
 }
-
 locationButton.addEventListener("click", getUserCoordinates);
 searchButton.addEventListener("click", getCityCoordinates);
-cityInput.addEventListener("keyup", e => e.key === "Enter" && getCityCoordinates()); 
+cityInput.addEventListener("keyup", e => e.key === "Enter" && getCityCoordinates());
+
+
+// Toggle Button
+const menuToggle = document.getElementById('menuToggle');
+const sideNav = document.getElementById('sideNav');
+
+// Toggle side nav on menu icon click
+menuToggle.addEventListener('click', () => {
+    sideNav.classList.toggle('active');
+});
+
+// Automatically show side nav on hover
+menuToggle.addEventListener('mouseenter', () => {
+    sideNav.classList.add('active');
+});
+
+menuToggle.addEventListener('mouseleave', () => {
+    if (!sideNav.classList.contains('active')) {
+        sideNav.classList.remove('active');
+    }
+});
