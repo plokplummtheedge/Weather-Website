@@ -1,73 +1,86 @@
+// Import necessary Firebase functions
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyC4YzHW4nAxRPVFi2PRiGYauz1oIKKKRmQ",
     authDomain: "weatheready-ilsg3.firebaseapp.com",
-    databaseURL: "https://weatheready-ilsg3-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "weatheready-ilsg3",
     storageBucket: "weatheready-ilsg3.appspot.com",
     messagingSenderId: "616320062383",
     appId: "1:616320062383:web:43b171e69dbfb008a7d55a"
-  };
+};
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-// Register User
-document.getElementById('register-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+// Check if we're on the register or login page based on the form ID
+document.addEventListener('DOMContentLoaded', () => {
+    const registerForm = document.getElementById('registerForm');
+    const loginForm = document.getElementById('loginForm');
 
-    auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // User registered
-            const user = userCredential.user;
-            alert(`Welcome ${name}!`);
-            // Redirect to homepage or do something else
-            window.location.href = "Homepage.html";
-        })
-        .catch((error) => {
-            const errorMessage = error.message;
-            alert(errorMessage);
-        });
-});
-
-// Login User
-document.getElementById('login-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // User logged in
-            window.location.href = "Homepage.html";
-        })
-        .catch((error) => {
-            const errorMessage = error.message;
-            alert(errorMessage);
-        });
-});
-
-// Display user info and handle logout
-auth.onAuthStateChanged((user) => {
-    const userInfo = document.getElementById('user-info');
-    const logoutButton = document.getElementById('logout-button');
+    if (loginForm) {
+        // Login Page: Handle Login
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form submission
     
-    if (user) {
-        userInfo.innerHTML = `Hello, ${user.email}`;
-        logoutButton.style.display = "block";
-    } else {
-        userInfo.innerHTML = 'Not logged in';
-        logoutButton.style.display = "none";
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+    
+            signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+        // Logged in successfully
+        const user = userCredential.user;
+        console.log("User logged in:", user);
+
+        // Store the user's email or display name in localStorage
+        localStorage.setItem('userEmail', user.email); // Example: storing user email
+        // If the user has a display name, store it (Firebase Auth user info includes displayName if set)
+        if (user.displayName) {
+            localStorage.setItem('userName', user.displayName);
+        }
+
+        // Redirect to homepage after login
+        window.location.href = "homepage.html";
+                })
+                .catch((error) => {
+                    // Firebase error code
+                    const errorCode = error.code;
+                    let errorMessage;
+    
+                    // Check for specific error codes and customize the message
+                    switch (errorCode) {
+                        case 'auth/wrong-password':
+                            errorMessage = "Invalid password"; // For incorrect credentials
+                            break;
+                        case 'auth/invalid-login-credentials':
+                            errorMessage = "Invalid email"; // For incorrect credentials
+                            break;
+                        case 'auth/invalid-email':
+                            errorMessage = "The email address is not valid."; // Invalid email format
+                            break;
+                        case 'auth/user-disabled':
+                            errorMessage = "This account has been disabled."; // Account disabled
+                            break;
+                        case 'auth/too-many-requests':
+                            errorMessage = "Too many failed login attempts. Please try again later.";
+                            break;
+                        case 'auth/operation-not-allowed':
+                            errorMessage = "Email/password accounts are not enabled."; // Auth not enabled
+                            break;
+                        default:
+                            errorMessage = "An error occurred. Please try again."; // Generic message
+                    }
+    
+                    // Display the custom error message
+                    document.getElementById('errorMessage').innerText = errorMessage;
+                });
+        });
     }
+    
 });
 
-// Logout User
-logoutButton?.addEventListener('click', () => {
-    auth.signOut().then(() => {
-        window.location.href = "login.html";
-    });
-});
+

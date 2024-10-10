@@ -113,3 +113,18 @@ menuToggle.addEventListener('mouseleave', () => {
         sideNav.classList.remove('active');
     }
 });
+
+// Get the current page URL
+const currentUrl = window.location.href;
+
+// Select all navigation links
+const navLinks = document.querySelectorAll('.tab a');
+
+// Loop through each link
+navLinks.forEach(link => {
+  // Check if the link's href matches the current URL
+  if (link.href === currentUrl) {
+    // Add the 'active' class to the current page's link
+    link.classList.add('active');
+  }
+});

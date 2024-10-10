@@ -159,58 +159,70 @@ body {
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+iframe {
+    width: 100%;
+    scrollbar-width: 1px;
+    scroll-behavior: smooth;
+   
+}
 
 
+@media (max-width: 750px) {
 
+  .logo-container {
+    font-size:large;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+    padding: 0px;
+    
+  }
+  
+}
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
-
-  .profile span {
-    font-size: 12px;
-  }
-
-  .navbar {
-      padding: 1px; /* Reduced padding for smaller screens */
-      flex-direction: row; /* Keep items in a row */
-      align-items: center;
-  }
-
-  .menu-icon img.icon {
-      margin-left: 5px;
-      width: 35px; /* Smaller menu icon on mobile */
-      height: 35px;
-  }
-
-  .logo {
-      max-height: 30px; /* Reduce logo size on mobile */
-  }
-
-  .profile {
-      margin-left: auto; /* Push profile to the right */
-  }
-
-  .side-nav {
-      top: 50px; /* Position below header */
-      width: 200px; /* Adjust width for mobile */
-  }
-}
-
-@media screen and (max-width: 480px) {
-
+    .navbar {
+        padding: 2px; /* Reduced padding for smaller screens */
+        flex-direction: row; /* Keep items in a row */
+        align-items: center;
+    }
   
-  .logo {
-      max-height: 25px; /* Further reduce logo size for small devices */
+    .menu-icon img.icon {
+        width: 25px; /* Smaller menu icon on mobile */
+        height: 25px;
+    }
+  
+    .logo {
+        max-height: 30px; /* Reduce logo size on mobile */
+    }
+  
+   
+  
+    .side-nav {
+        top: 50px; /* Position below header */
+        width: 200px; /* Adjust width for mobile */
+    }
   }
-
-  .menu-icon img.icon {
-      margin-left: 5px;
-      width: 30px; /* Even smaller menu icon */
-      height: 30px;
+  
+  @media screen and (max-width: 480px) {
+    .profile span {
+      font-size: 13px;
+    }
+    
+    .logo {
+        max-height: 30px; /* Further reduce logo size for small devices */
+    }
+  
+    .menu-icon img.icon {
+        margin-left: 5px;
+        width: 35px; /* Even smaller menu icon */
+        height: 35px;
+    }
   }
-}
-
-/* Hover Effect for Menu Button */
-.menu-icon:hover ~ .side-nav {
-  transform: translateX(0); /* Show the side nav on hover */
-}
+  
+  /* Hover Effect for Menu Button */
+  .menu-icon:hover ~ .side-nav {
+    transform: translateX(0); /* Show the side nav on hover */
+  }

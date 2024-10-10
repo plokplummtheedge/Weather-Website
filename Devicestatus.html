@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <script src="devicestatus.js" defer></script>
+        <script type="module" src="devicestatus.js"></script>
         <link rel="stylesheet" href="devicestatus.css">
         <title>Device Status</title>
     </head>
@@ -18,8 +18,9 @@
             WeatheReady
         </div>
         <div class="profile">
-            <span style="margin-right: 20px;">FirstName LastName</span>
+            <span id="userDisplay"> Guest</span> <!-- Placeholder text before login -->
             <div class="profilelogo"></div>
+            <button id="logoutButton">Logout</button>
         </div>
     </header>
 
@@ -27,6 +28,7 @@
     <nav class="side-nav" id="sideNav">
         <ul class="tab">
             <li><a href="Homepage.html"><img src="images/home.png" class="icon" /><span>Home</span></a></li>
+            <li><a href="News.html"><img src="images/news.png" class="icon" /><span>Latest News</span></a></li>
             <li><a href="Weather+Dashboard.html"><img src="images/weather.png" class="icon" /><span>Weather</span></a></li>
             <li><a href="livemap.html"><img src="images/map.png" class="icon" /><span>Live Map</span></a></li>
             <li><a href="Emergencykit.html"><img src="images/social.png" class="icon" /><span>Emergency Kit</span></a></li>
@@ -38,26 +40,16 @@
 <div class="content">
 
     <h1> Realtime Device Status </h1>
-
-    <div class="content">
-        
     
-        <div class="container">
+        Status: Dry <br>
+        Location: Batangas <br> <br> <br>
+        Weather: Clear <br> <br> <br>
+
+
+        <button>
+            Emergency <br> Button
+        </button>
     
-                Status: Dry <br>
-                Location: Batangas <br> <br> <br>
-                Weather: Clear <br> <br> <br>
-
-
-                <button>
-                    Emergency <br> Button
-                </button>
-               
-
-
-        </div>
-    
-    </div>
 </div>
 
     

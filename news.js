@@ -1,19 +1,3 @@
-document.getElementById('addNote').addEventListener('click', function() {
-    const noteInput = document.getElementById('noteInput');
-    const notesList = document.getElementById('notesList');
-    
-    if (noteInput.value.trim() !== "") {
-        const li = document.createElement('li');
-        li.textContent = noteInput.value;
-        li.addEventListener('click', function() {
-            this.remove();
-        });
-        notesList.appendChild(li);
-        noteInput.value = '';
-    }
-});
-
-// Toggle Button
 const menuToggle = document.getElementById('menuToggle');
 const sideNav = document.getElementById('sideNav');
 
@@ -27,12 +11,17 @@ menuToggle.addEventListener('mouseenter', () => {
     sideNav.classList.add('active');
 });
 
+// Hide side nav when mouse leaves the menu icon
 menuToggle.addEventListener('mouseleave', () => {
     if (!sideNav.classList.contains('active')) {
         sideNav.classList.remove('active');
     }
 });
 
+// Hide side nav when mouse leaves the navigation bar
+sideNav.addEventListener('mouseleave', () => {
+    sideNav.classList.remove('active');
+});
 
 // Get the current page URL
 const currentUrl = window.location.href;
