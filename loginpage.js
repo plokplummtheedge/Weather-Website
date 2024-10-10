@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Redirect to homepage after login
-        window.location.href = "homepage.html";
+        window.location.href = "Homepage.html";
                 })
                 .catch((error) => {
                     // Firebase error code
